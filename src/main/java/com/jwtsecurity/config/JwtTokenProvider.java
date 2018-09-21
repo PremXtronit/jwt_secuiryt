@@ -1,6 +1,6 @@
 package com.jwtsecurity.config;
 
-import com.jwtsecurity.model.MyUserDetails;
+import com.jwtsecurity.model.User;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class JwtTokenProvider {
 
     public String generateToken(Authentication authentication) {
 
-        MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
+        User myUserDetails = (User) authentication.getPrincipal();
 
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);

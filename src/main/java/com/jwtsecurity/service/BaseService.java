@@ -1,8 +1,12 @@
 package com.jwtsecurity.service;
 
+import com.jwtsecurity.model.User;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 public abstract class BaseService {
 
 
-    /*We will write common for all the services code here*/
-
+    public User getCurrentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
 }

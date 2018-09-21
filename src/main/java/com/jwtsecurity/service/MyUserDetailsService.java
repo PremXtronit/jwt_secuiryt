@@ -1,6 +1,5 @@
 package com.jwtsecurity.service;
 
-import com.jwtsecurity.model.MyUserDetails;
 import com.jwtsecurity.model.User;
 import com.jwtsecurity.repository.UserRepository;
 import org.slf4j.Logger;
@@ -31,7 +30,8 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     private UserDetails create(User user) {
-        return new MyUserDetails(user.getId(), user.getUsername(), user.getPassword(), null, true);
+        //get role and find authority and save
+        return new User(user.getId(), user.getUsername(), user.getPassword(), null, true);
     }
 
 }

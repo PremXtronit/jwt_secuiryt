@@ -6,7 +6,10 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 
@@ -19,12 +22,12 @@ public abstract class Auditable<U> {
     @LastModifiedBy
     protected U updateBy;
     @CreatedDate
-    protected LocalDateTime creationDate;
+    protected LocalDateTime creationDate; // 2018-09-21 11:11:33
     @LastModifiedDate
     protected LocalDateTime lastModifiedDate;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue //(strategy = GenerationType.AUTO)
+    protected Long id;
 
     public Long getId() {
         return id;

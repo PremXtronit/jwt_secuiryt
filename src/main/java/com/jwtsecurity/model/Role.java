@@ -19,6 +19,10 @@ public class Role extends Auditable<String> {
     private String description;
 
 
+    public Role() {
+        //BeanPropertyRowMapper needs default constructor
+    }
+
     public Role(Roles name, String description) {
         this.name = name;
         this.description = description;
