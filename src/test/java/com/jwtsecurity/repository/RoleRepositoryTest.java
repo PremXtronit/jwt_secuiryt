@@ -29,10 +29,15 @@ public class RoleRepositoryTest {
     public void findAll() {
         logger.info("Test for findAll");
         List<Role> roles = roleRepository.findAll();
-        assertEquals(0, roles.size());
+
+        if (roles.size() == 0) {
+            assertEquals(0, roles.size());
+        } else {
+            findById();
+        }
     }
 
-    @Test
+
     public void findById() {
         logger.info("Test is running");
         Optional<Role> role = roleRepository.findById(new Long(1));

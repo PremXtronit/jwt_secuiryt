@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -49,4 +51,17 @@ public class RoleDao {
         return jdbcTemplate.update("inser into role (id,name,description)",
                 role.getId(), role.getName(), role.getDescription());
     }
+
+    public List<Role> findAllJPQL() {
+        Query query = em.createQuery("select r from role r");
+        List<Role> roles = (List<Role>) query.getResultList();
+
+
+        TypedQuery<Role> typedQuery = em.createQuery("select r from role r", Role.class);
+        List<Role> roleList = typedQuery.getResultList();
+
+
+        return roleList;
+    }
+
 }
